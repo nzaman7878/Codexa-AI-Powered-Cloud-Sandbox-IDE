@@ -31,7 +31,10 @@ function getProxy(sandboxId) {
 
 app.use((req, res, next) => {
     const host = req.headers.host;
-    const sandboxId = host.split('.')[ 0 ]; // Extract sandboxId from subdomain
+    if (!host) {
+        return res.status(400).send('Host header is required');
+    }
+    const sandboxId = host.split('.')[0];
 
 
 
