@@ -41,4 +41,5 @@ app.use((req, res, next) => {
     return getProxy(sandboxId)(req, res, next);
 })
 
-export default app
+export default app;
+export { getProxy };
