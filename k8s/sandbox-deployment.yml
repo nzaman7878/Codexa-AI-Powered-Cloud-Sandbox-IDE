@@ -8,11 +8,11 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: sandbox-api
+      app: sandbox
   template:
     metadata:
       labels:
-        app: sandbox-api
+        app: sandbox
     spec:
       serviceAccountName: resource-manager
       containers:
@@ -32,6 +32,12 @@ spec:
             port: 3000
           initialDelaySeconds: 90
           timeoutSeconds: 10
+        env:
+          - name: REDIS_URL
+            valueFrom:
+              secretKeyRef:
+                name: database
+                key: REDIS_URL
         readinessProbe:
           httpGet:
             path: /api/sandbox/health
