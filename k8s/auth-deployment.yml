@@ -15,7 +15,7 @@ spec:
         app: auth
     spec:
       containers:
-      - image:  auth
+      - image:  329599656829.dkr.ecr.ap-southeast-1.amazonaws.com/auth:v4
         imagePullPolicy: IfNotPresent
         name:  auth-container
         resources:
@@ -49,7 +49,6 @@ spec:
             secretKeyRef:
               name: database
               key: RABBITMQ_URL
-
 
         - name: GOOGLE_CLIENT_ID
           valueFrom:
